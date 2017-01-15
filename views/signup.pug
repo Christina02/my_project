@@ -1,0 +1,46 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	h2 Регистрация
+	form( action='/signup',method='POST')
+		p Имя: 	 
+			input(type="text" name="firstname" required)
+		p Фамилия:  
+			input(type="text" name="lastname" required)
+		p Пароль:  
+			input(type="password" name="pwd" required)
+		p Повторите пароль: 
+			input(type="password" name="pwd2" required)
+		p Логин:  
+			input(type="text" name="username" required)
+		p E-mail:  	 
+			input(type="emile" name="email" required)
+		p Город:  	 
+			input(type="text" name="city" required)
+		p Телефон:  
+			input(type="tel" name="number" required)
+		p 
+			h4 Пол
+			.b-form__checkbox
+				input(id="ch1" type="radio" name="sex" value="man")
+				label(for="ch1") Мужской
+				br
+				input(id="ch2" type="radio" name="sex" value="woman")
+				label(for="ch2") Женский
+				br
+		p 
+			h4 Тип пользователя
+		
+			input(id="ch3" type="radio" name="type" value="master" )
+			label(for="ch3") Мастер
+			br 
+			input(id="ch4" type="radio" name="type" value="user" selected=true)
+			label(for="ch4") Покупатель
+			br 
+		p 
+			div(align="center" )
+				input(align="right" type="submit" value="Зарегистрироваться")
+		-if(message!='null')
+			h4= message

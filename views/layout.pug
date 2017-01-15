@@ -1,0 +1,91 @@
+﻿doctype html
+
+	
+html
+	head 
+		block style
+		title Omega
+	body
+		#basic
+			header
+				img(src="../images/logo.jpg", float=left, alt="Omega")
+				a.goas(href="/login") /Вход
+				a.goas(href="/signup") Регистрация        
+				nav
+					.bg-1
+						ul
+							li 
+								a(href="/") Главная
+							li 
+								a(href="/catalog") Каталог
+							li 
+								a(href="/order") Товар
+							li 
+								a(href="/master") Мастера
+							li 
+								a(href="/predlog") Сообщения
+							li 
+								a(href="/basket") Корзина
+							li 
+								#none-bg
+									a(href="/page") Моя страница
+   
+					.bg-2
+			#content
+				article
+					block content
+				aside
+					.block-nad-menu
+					.block-menu
+						ul
+							li 
+								h1 Каталог
+							li 
+								a(href="#") Аксесуары
+							li 
+								a(href="#") Бижутерия
+							li 
+								a(href="#") Канцелярия
+							li 
+								a(href="#") Косметика
+							li 
+								a(href="#") Женская одежда
+							li 
+								a(href="#") Мужская одежда
+							li 
+								a(href="#") Обувь
+							li 
+								a(href="#") Подарки и сувениры
+							li 
+								a(href="#") Посуда
+							li 
+								a(href="#") Праздники
+							li 
+								a(href="#") Сумки
+							li 
+								a(href="#") Мебель
+							li 
+								a(href="#") Декор для дома
+							li 
+								a(href="#") Для детей
+							li 
+								a(href="#") Куклы и игрушки
+							li 
+								a(href="#") Для животных
+							li 
+								a(href="#") Сад
+							li 
+								a(href="#") Текстиль для дома
+							li.none-bg
+								li 
+									a(href="#") Товары для творчества
+
+					.block-pod-menu     
+				.myclr
+				footer
+					.yellow
+					.p1 ООО “Omega” 2016г.
+					.p3
+						a(href="#") 
+							img(src="../images/up.jpg", width="30", alt="", title="")
+					p

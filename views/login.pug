@@ -1,0 +1,21 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	h2 Вход
+		form( method='POST', action="/login")
+			p
+				h6 Логин: 
+					input(type="text" name="username" required, autofocus)
+				h6 Пароль: 
+					input(type="password" name="password" required)
+			p
+				h4
+					a(href='/signup' style="text-decoration:none; color:black; text-transform:uppercase; font:12pt Arial;") Зарегистрироваться 
+					input(name="in",type="submit" value="Вход" style="font:12pt Arial; margin:0;")
+					span.clearfix
+	p
+		-if(message!='null')
+			
+			h4= message

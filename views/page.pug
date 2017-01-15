@@ -1,0 +1,56 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	p
+	h2= user.firstname+' '+user.secondname+' ('+user.username+')'
+		-if(user.image=='user.jpg') 
+			p
+				img(src="images/"+user.image width="25%" float=center )
+		-else
+			.product
+				img(src="images/"+user.image width="100%" float=left )
+	p
+	p
+		-if(user.city!='null') 
+			h4= user.city
+		p= 'Email: '+user.email + '   Номер телефона: '+ user.number
+		-if(user.male==='man') 
+			p= 'Пол: Мужской'
+		-if(user.male=='woman') 
+			p= 'Пол: Женский'
+		-if(user.type=='user') 
+			p= 'Тип пользователя: Пользователь'
+		-if(user.type=='master') 
+			p= 'Тип пользователя: Мастер'
+		p= 'Рейтинг пользователя: '+user.star
+		-if(user.about!='undefined') 
+				strong= 'Информация о пользователе: ' 
+				p= user.about	
+		p
+		-if(user.type==='master')
+			h2 Работы:
+			.pr
+				ul
+					each product in products
+						li 
+							.licat
+								a(href='/product/'+product._id )
+									div
+										h2= product.name
+										p
+											a(href="./images/"+product.image onclick="popUpPic(this.href); return false;" )
+												img(src="./images/"+product.image float=left width="50%" height="350px" ) 
+											a(href="./images/"+product.image2 onclick="popUpPic(this.href); return false;" )
+												img(src="./images/"+product.image2 float=left width="50%" height="350px" ) 
+										p= 'Дата размещения товара:  '+ product.date.getDate() + '/' + product.date.getMonth()+1 + '/' + product.date.getFullYear()
+										-if(product.description=='null') div= "  "+product.description
+										-if(product.materials=='null') div= "  "+product.materials
+										p= 'Категория: '+product.category+'   Тип: '+product.type
+										h4= 'Цена: '+product.price+' руб'
+										p= "Рейтинг: "+ product.star
+						p
+		p= 'Дата создания страницы:  '+ user.createdate.getDate() + '/' + user.createdate.getMonth()+1 + '/' + user.createdate.getFullYear()
+		-if(id===true) 
+			a(href="#" id="downloadLink") download

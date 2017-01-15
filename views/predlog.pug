@@ -1,0 +1,23 @@
+﻿extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	h2 Отзывы
+	form(method="POST" style="padding:0 0 0 5%")
+		p
+			textarea(name="message" cols=50 rows=5 style="resize: none;")
+		p 
+			input(align="right" type="submit" value="Отправить")
+	ul(style="list-style:none;")
+		each mess in messages
+			li
+					.licat
+						a(href='/'+mess.sender)
+							h2= mess.username
+							p= mess.text
+							
+							p= "Дата: "+ mess.date.getDate() + '/' + mess.date.getMonth()+1 + '/' + mess.date.getFullYear()
+			p
+	br
+	

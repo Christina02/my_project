@@ -1,0 +1,67 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	.licat
+		a(href='/'+user._id )
+			p
+				h2= user.firstname+' '+user.secondname+' ('+user.username+')'
+				-if(user.image=='user.jpg') 
+					p
+						img.product2(src="../images/"+user.image width="20%" float=center )
+				-else
+					img.product2(src="../images/"+user.image width="20%" float=left )
+				div(style="padding:5px 0px 0px 23%;")
+					-if(user.city!='null') 
+						h4= user.city
+					-if(user.number!='0') 
+						p= 'Email: '+user.email
+					-else 
+						p= 'Email: '+user.email + '   Номер телефона: '+ user.number
+					-if(user.male=='man') 
+						p= 'Пол: Мужской'
+					-if(user.male=='woman') 
+						p= 'Пол: Женский'
+					-if(user.type=='user') 
+						p= 'Тип пользователя: Пользователь'
+					-if(user.type=='master') 
+						p= 'Тип пользователя: Мастер'
+					p
+						-if(user.about!='undefined') 
+							p= user.about
+		
+	p
+
+	
+		table.tour.product
+			tr
+				th.t1
+					h2= product.name
+					p
+						a(href="../images/"+product.image onclick="popUpPic(this.href); return false;" )
+							img.product2(src="../images/"+product.image float=center width="100%" ) 
+						a(href="../images/"+product.image2 onclick="popUpPic(this.href); return false;" )
+							img.product2(src="../images/"+product.image2 float=left width="100%"  ) 
+				td.t3
+					p
+					p= 'Дата размещения товара:  '+ product.date.getDate() + '/' + product.date.getMonth()+1 + '/' + product.date.getFullYear()
+					p= 'Категория: '+product.category+'   Тип: '+product.type
+					-if(!(product.description=='')) 
+						h4= "Описание: "
+						p= product.description
+					-if(!(product.materials=='')) 
+						h4= "Материалы: "
+						p= product.materials
+					-if(!(product.city=='null')) 
+						div= "Город: "+product.city
+					-if(!(product.price==null)) 
+						h4= 'Цена: '+product.price+' руб'
+					p= "Рейтинг: "+ product.star
+					div
+						a(href="/message/"+product._id id="downloadLink") Отзывы
+						form(action='/product/'+product._id, method="POST")
+							input(type="submit" name="add" value="Купить")
+					-if(status=='ok') 
+						h2= 'Товар добавлен в корзину'
+			

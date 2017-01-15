@@ -1,0 +1,39 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	h2 Отправить заказ
+	form( action='/order',method='POST')
+		h4 Вид товара:
+		input(id="ch8" type="radio" name="type" value="предложение" required ) 
+		label(for="ch8") предложение
+		br
+		input( id="ch9" type="radio" name="type" value="заказ") 
+		label(for="ch9") заказ
+		h4 Категория:
+		input(id="ch1" type="radio" name="kat" value="готовая" required) 
+		label(for="ch1") готовая
+		br
+		input( id="ch2" type="radio" name="kat" value="заказ") 
+		label(for="ch2") на заказ 
+		p
+		select(name="menu" size="1")
+			each cat in categories
+				option(value=cat.number) 
+					p= cat.name
+		p Название: 	 
+			input(type="text" name="name" required)
+		p Описание: 
+			p
+				textarea(name="discription" cols=50 rows=5 style="resize: none;")
+		p Материалы: 	 
+			p
+				textarea(name="materials" cols=50 rows=5 style="resize: none;")
+		p Цена: 	 
+			input(type="text" pattern="[0-9]{,9}" name="price")
+			strong= '   руб'
+		input(align="right" type="submit" value="Отправить")
+		-if(status=='ok') 
+			p= 'ok'
+

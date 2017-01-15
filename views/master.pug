@@ -1,0 +1,29 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	-var i=0
+	-function inc(N) {i+=N;};
+
+	ul
+		each user in users
+				li
+					.licat
+						a(href='/'+user._id )
+							h2= user.firstname+" "+user.secondname+" ("+user.username+")"
+							p
+								img(src="./images/"+user.image float=left width="50%") 
+								-if(user.about!='undefined') 
+									div= "  "+user.about
+							h4 Контактная информация: 
+								-if(user.number == '0')
+									div= "Email:  "+user.email
+								-else
+									div= "Email:  "+user.email+"  Номер телефона:  "+user.number
+							p= "Рейтинг: "+ user.star
+				p
+		hr
+	
+	input(name="count",type="submit" width=10 value="Вход")
+	p= status

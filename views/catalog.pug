@@ -1,0 +1,35 @@
+extends ./layout.pug
+block style
+	link(href="../css/style.css", rel="stylesheet")
+	meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+block content
+	p
+	.pr
+		ul
+			each product in products
+					li
+						.licat
+							a(href='/product/'+product._id )
+								section
+									table.tour
+										tr
+											th.t1
+												h2
+													h2= product.name
+												
+												img.leftfoto.product2(width="85%" src="./images/"+product.image alt="product")
+											td.t2
+												-if(product.city!='null') 
+													p= 'Город: '+ product.city
+												-if(product.price!='0') 
+													p= 'Цена: '
+														strong= product.price+' руб.'
+												p= 'Категория: '
+													strong= product.type
+												p= product.category
+												p
+												p
+												.basic
+												p= 'Дата размещения товара:  '+product.date.getDate() + '/' + product.date.getMonth()+1 + '/' + product.date.getFullYear()
+												
+					hr
